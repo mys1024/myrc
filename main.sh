@@ -49,7 +49,7 @@ function repourl() {
   remote_url=$(git remote get-url origin)
   if [ -n $remote_url ]; then
     if [[ $remote_url == git@* ]]; then
-      repo_url=$(echo $remote_url | sed -e -e 's/\.git$//' 's/:/\//' -e 's/git@/https:\/\//')
+      repo_url=$(echo $remote_url | sed -e 's/\.git$//' -e 's/:/\//' -e 's/git@/https:\/\//')
     else
       repo_url=$(echo $remote_url | sed -e 's/\.git$//')
     fi
