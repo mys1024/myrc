@@ -1,9 +1,10 @@
 # required env variables:
 # - PROXY_ADDR
 
-# load .env
-if [ -f .env ]; then
-  source .env
+# myrc
+MYRC_PATH="$HOME/myrc"
+if [ -f "$MYRC_PATH/.env" ]; then
+  source "$MYRC_PATH/.env"
 fi
 
 # aliases
