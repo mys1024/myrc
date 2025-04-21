@@ -10,11 +10,11 @@ fi
 # aliases
 alias cl="clear"
 
-# Node.js
+# nodejs
 export NODE_OPTIONS="--max_old_space_size=8192"
 export COREPACK_NPM_REGISTRY="https://registry.npmmirror.com"
 
-# Podman
+# podman
 export DOCKER_HOST="unix:///run/user/1000/podman/podman.sock"
 alias pm="podman"
 alias pmc="podman compose"
