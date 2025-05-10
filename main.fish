@@ -27,7 +27,8 @@ function pxyon
     set -gx http_proxy "http://$PROXY_ADDR"
     set -gx all_proxy "socks5://$PROXY_ADDR"
   else
-    echo "Error: PROXY_ADDR is not set."
+    echo "Error: PROXY_ADDR is not set." >&2
+    return 1
   end
 end
 
@@ -56,7 +57,8 @@ function repourl
     end
     echo $repo_url
   else
-    echo "Error: Unable to get remote url."
+    echo "Error: Unable to get remote url." >&2
+    return 1
   end
 end
 
@@ -68,7 +70,8 @@ function mkpr
     echo "compare_url: $compare_url"
     $BROWSER $compare_url
   else
-    echo "Error: Unable to get repo url."
+    echo "Error: Unable to get repo url." >&2
+    return 1
   end
 end
 
@@ -78,6 +81,7 @@ function repo
   if test -n "$repo_url"
     $BROWSER $repo_url
   else
-    echo "Error: Unable to get repo url."
+    echo "Error: Unable to get repo url." >&2
+    return 1
   end
 end
