@@ -41,9 +41,9 @@ function pxyoff() {
 
 # show proxy
 function pxyshow() {
-  echo "https_proxy: ${https_proxy}"
-  echo "http_proxy: ${http_proxy}"
-  echo "all_proxy: ${all_proxy}"
+  echo "https_proxy=\"$https_proxy\""
+  echo "http_proxy=\"$http_proxy\""
+  echo "all_proxy=\"$all_proxy\""
 }
 
 # convert git remote url to https repo url
