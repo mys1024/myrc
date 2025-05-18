@@ -14,6 +14,9 @@ alias cl="clear"
 set -gx NODE_OPTIONS "--max_old_space_size=8192"
 set -gx COREPACK_NPM_REGISTRY "https://registry.npmmirror.com"
 
+# pager
+set -gx PAGER "most"
+
 # podman
 set -gx DOCKER_HOST "unix:///run/user/1000/podman/podman.sock"
 alias pm="podman"
