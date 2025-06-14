@@ -15,7 +15,7 @@ export NODE_OPTIONS="--max_old_space_size=8192"
 export COREPACK_NPM_REGISTRY="https://registry.npmmirror.com"
 
 # editor
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # pager
 export PAGER="most"

@@ -15,7 +15,7 @@ set -gx NODE_OPTIONS "--max_old_space_size=8192"
 set -gx COREPACK_NPM_REGISTRY "https://registry.npmmirror.com"
 
 # editor
-set -gx EDITOR "vim"
+set -gx EDITOR "nvim"
 
 # pager
 set -gx PAGER "most"
