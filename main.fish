@@ -3,9 +3,28 @@
 
 # myrc
 set -gx MYRC_PATH "$HOME/myrc"
-if test -f "$MYRC_PATH/.env.fish"
-  source "$MYRC_PATH/.env.fish"
+
+# load dotenv file through bash
+function load_dotenv --argument-names file
+  test -f "$file"; or return 0
+  command -q bash; or begin; echo "dotenv: bash not found, skip $file" >&2; return 0; end
+  command bash -c '
+    declare -A old
+    while IFS= read -r -d "" kv; do old["${kv%%=*}"]=${kv#*=}; done < <(env -0)
+    set -a; . "$1"; set +a
+    while IFS= read -r -d "" kv; do
+      n=${kv%%=*}; v=${kv#*=}
+      [ "${old[$n]+x}" ] && [ "${old[$n]}" = "$v" ] && continue
+      printf "%s=%s\0" "$n" "$v"
+    done < <(env -0)
+  ' bash "$file" | while read -z -l entry
+    set -l kv (string split -m1 = -- $entry)
+    set -gx "$kv[1]" "$kv[2]"
+  end
 end
+
+# load .env
+load_dotenv "$MYRC_PATH/.env"
 
 # aliases
 alias cl="clear"

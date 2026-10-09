@@ -3,8 +3,12 @@
 
 # myrc
 MYRC_PATH="$HOME/myrc"
-if [ -f "$MYRC_PATH/.env.sh" ]; then
-  source "$MYRC_PATH/.env.sh"
+
+# load .env
+if [ -f "$MYRC_PATH/.env" ]; then
+  set -a
+  . "$MYRC_PATH/.env"
+  set +a
 fi
 
 # aliases
